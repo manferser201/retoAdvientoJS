@@ -11,30 +11,13 @@ console.log(wrapped);
  */
 function wrapping(gifts) {
     
-    let wrapped = [], wrapping = "", fila = 1;
+    let wrapped = [], wrapping = "";
     let wrappedTopBottom = "";
 
     for (let i = 0; i < gifts.length; i++) {
         
-        fila = 1;
         wrappedTopBottom = wrappingTopBottom(gifts[i].length);
-        
-        // Dibujamos los regalos envueltos
-        if(fila == 1){
-            wrapping = wrappedTopBottom;
-            fila += 1;
-        }
-
-        if(fila == 2){
-
-            wrapping += wrappedGift(gifts[i]);
-            fila += 1;
-        }
-
-        if (fila == 3) {
-            wrapping += wrappedTopBottom;
-            wrapped.push(wrapping);
-        }
+        wrapped.push(`${wrappedTopBottom}\n*${gifts[i]}*\n${wrappedTopBottom}`);
 
     } // Recorremos el array
     
@@ -56,19 +39,6 @@ function wrappingTopBottom(sizeGift){
         
         wrapped += "*";    
     }
-
-    return wrapped;
-}
-
-/**
- * Función que "envuelve" el regalo y le añade los saltos de líneas
- * 
- * @param {String} gift 
- * @returns String
- */
-function wrappedGift (gift) {
-
-    let wrapped = `\n*${gift}*\n`;
 
     return wrapped;
 }
