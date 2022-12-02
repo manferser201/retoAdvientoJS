@@ -11,34 +11,12 @@ console.log(wrapped);
  */
 function wrapping(gifts) {
     
-    let wrapped = [], wrapping = "";
+    let wrapped = [];
     let wrappedTopBottom = "";
 
-    for (let i = 0; i < gifts.length; i++) {
-        
-        wrappedTopBottom = wrappingTopBottom(gifts[i].length);
-        wrapped.push(`${wrappedTopBottom}\n*${gifts[i]}*\n${wrappedTopBottom}`);
-
-    } // Recorremos el array
+    gifts.forEach(gift =>{
+        wrapped.push(`${gift.replace(/./g, "*")}**\n*${gift}*\n**${gift.replace(/./g, "*")}`);
+    }) // Recorremos el array
     
-    return wrapped;
-}
-
-
-/**
- * Función que realiza los asteríscos relacionados con la parte superior e inferior
- * 
- * @param {Integer} sizeGift 
- * @returns String
- */
-function wrappingTopBottom(sizeGift){
-
-    let wrapped = "";
-
-    for (let index = 0; index < sizeGift + 2; index++) {
-        
-        wrapped += "*";    
-    }
-
     return wrapped;
 }
