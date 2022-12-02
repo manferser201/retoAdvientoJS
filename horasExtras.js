@@ -18,15 +18,12 @@ function countHours(year, holidays) {
     
     let hours = 0;
 
-    for (let index = 0; index < holidays.length; index++) {
-
-        let date = new Date(`${year}/${holidays[index]}`);
-
-        if (date.getDay() >= 1 && date.getDay() <= 5){
+    holidays.forEach(holiday => {
+        if (new Date(`${year}/${holiday}`).getDay() != 0 && new Date(`${year}/${holiday}`).getDay() <= 5){
             
             hours += 2;
-        }   
-    }
-    
+        }
+    })
+  
     return hours;
 }
